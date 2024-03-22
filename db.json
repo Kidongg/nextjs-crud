@@ -1,0 +1,34 @@
+{
+  "payments": [
+    {
+      "id": "728ed52f",
+      "amount": 100,
+      "status": "pending",
+      "email": "m@example.com"
+    },
+    {
+      "id": "489e1d42",
+      "amount": 125,
+      "status": "processing",
+      "email": "example@gmail.com"
+    },
+    {
+      "id": "d6b3b6f2",
+      "amount": 200,
+      "status": "pending",
+      "email": "invigoworks@co.kr"
+    },
+    {
+      "id": "j2q3b6f4",
+      "amount": 300,
+      "status": "success",
+      "email": "naver@daum.net"
+    },
+    {
+      "id": "f6b2i6f7",
+      "amount": 400,
+      "status": "failed",
+      "email": "kakao@daum.net"
+    }
+  ]
+}
