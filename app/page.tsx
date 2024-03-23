@@ -32,23 +32,23 @@ const Page = () => {
   const [payments, setPayments] = useState([]);
 
   // 데이터 패칭 함수 실행
-  // useEffect(() => {
-  //   const fetchPayments = async () => {
-  //     const payments = await getPayments();
-  //     setPayments(payments);
-  //   };
+  useEffect(() => {
+    const fetchPayments = async () => {
+      const payments = await getPayments();
+      setPayments(payments);
+    };
 
-  //   fetchPayments();
-  // }, []);
+    fetchPayments();
+  }, []);
 
   console.log("payments: ", payments);
 
   //! 데스트를 위한 UI 작업중
 
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-10">클라이언트 컴포넌트</h1>
-      <Button>추가하기</Button>
+    <div className="container mx-auto py-10 flex flex-col gap-4">
+      <h1 className="text-2xl font-bold">클라이언트 컴포넌트</h1>
+      <Button className="w-1/3">추가하기</Button>
       <DataTable data={payments} columns={paymentColumns} />
     </div>
   );
