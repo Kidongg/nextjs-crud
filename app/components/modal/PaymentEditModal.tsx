@@ -1,8 +1,8 @@
 import useModal from "@/app/hooks/useModal";
 import { IoClose } from "react-icons/io5";
 
-const PaymentAddModal = () => {
-  const { setIsAddPaymentsModal } = useModal();
+const PaymentEditModal = () => {
+  const { setIsEditPaymentsModal } = useModal();
 
   return (
     <div
@@ -18,7 +18,7 @@ const PaymentAddModal = () => {
         <div
           className="flex justify-end cursor-pointer"
           onClick={() => {
-            setIsAddPaymentsModal(false);
+            setIsEditPaymentsModal(false);
           }}
         >
           <IoClose size={20} />
@@ -27,11 +27,11 @@ const PaymentAddModal = () => {
           모달 내용
         </div>
         <div className="bg-green-500 border-none text-white px-8 py-4 text-center no-underline inline-block text-lg mx-1 my-0.5 cursor-pointer rounded-sm w-full">
-          결제 내역 추가하기
+          결제 내역 수정하기
         </div>
       </div>
     </div>
   );
 };
 
-export default PaymentAddModal;
+export default PaymentEditModal;

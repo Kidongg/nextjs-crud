@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./components/ui/button";
 import PaymentAddModal from "./components/modal/PaymentAddModal";
 import useModal from "./hooks/useModal";
+import PaymentEditModal from "./components/modal/PaymentEditModal";
 
 // API 조회 함수
 const getPayments = async () => {
@@ -32,7 +33,8 @@ const getPayments = async () => {
 
 const Page = () => {
   const [payments, setPayments] = useState([]); // 결제 정보 상태
-  const { isAddPaymentsModal, setIsAddPaymentsModal } = useModal(); // 모달 상태
+  const { isAddPaymentsModal, setIsAddPaymentsModal, isEditPaymentsModal } =
+    useModal(); // 모달 상태
 
   // 데이터 패칭 함수 실행
   useEffect(() => {
@@ -63,6 +65,7 @@ const Page = () => {
         <DataTable data={payments} columns={paymentColumns} />
       </div>
       {isAddPaymentsModal && <PaymentAddModal />}
+      {isEditPaymentsModal && <PaymentEditModal />}
     </div>
   );
 };

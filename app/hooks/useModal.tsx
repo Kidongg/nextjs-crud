@@ -2,9 +2,19 @@ import { useContext } from "react";
 import Context from "../providers/Context";
 
 const useModal = () => {
-  const { isAddPaymentsModal, setIsAddPaymentsModal } = useContext(Context);
+  const {
+    isAddPaymentsModal,
+    setIsAddPaymentsModal,
+    isEditPaymentsModal,
+    setIsEditPaymentsModal,
+  } = useContext(Context);
 
-  return { isAddPaymentsModal, setIsAddPaymentsModal };
+  return {
+    isAddPaymentsModal,
+    setIsAddPaymentsModal,
+    isEditPaymentsModal,
+    setIsEditPaymentsModal,
+  };
 };
 
 export default useModal;

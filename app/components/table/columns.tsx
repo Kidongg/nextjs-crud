@@ -1,6 +1,7 @@
 "use client";
 
-import { ColumnDef } from "@tanstack/react-table";
+import useModal from "@/app/hooks/useModal";
+import { ColumnDef, Row } from "@tanstack/react-table";
 import { MdEditSquare } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
@@ -11,6 +12,24 @@ export type Payment = {
   email: string;
 };
 
+// 결제 정보 수정 컴포넌트
+export const PaymentEditIcon = ({ row }: { row: Row<Payment> }) => {
+  const { setIsEditPaymentsModal } = useModal();
+
+  return (
+    <MdEditSquare
+      className="cursor-pointer"
+      onClick={() => setIsEditPaymentsModal(true)}
+    />
+  );
+};
+
+// 결제 정보 삭제 컴포넌트
+export const PaymentDeleteIcon = ({ row }: { row: Row<Payment> }) => {
+  return <MdDelete className="cursor-pointer" />;
+};
+
+// 결제 정보 컬럼
 export const paymentColumns: ColumnDef<Payment>[] = [
   {
     accessorKey: "status",
@@ -27,14 +46,10 @@ export const paymentColumns: ColumnDef<Payment>[] = [
   {
     id: "edit",
     header: "수정",
-    cell: ({ row }) => {
-      return <MdEditSquare className="cursor-pointer" />;
-    },
+    cell: PaymentEditIcon,
   },
   {
     id: "delete",
-    cell: ({ row }) => {
-      return <MdDelete className="cursor-pointer" />;
-    },
+    cell: PaymentDeleteIcon,
   },
 ];
