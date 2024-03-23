@@ -26,7 +26,14 @@ export const PaymentEditIcon = ({ row }: { row: Row<Payment> }) => {
 
 // 결제 정보 삭제 컴포넌트
 export const PaymentDeleteIcon = ({ row }: { row: Row<Payment> }) => {
-  return <MdDelete className="cursor-pointer" />;
+  const { setIsDeletePaymentsModal } = useModal();
+
+  return (
+    <MdDelete
+      className="cursor-pointer"
+      onClick={() => setIsDeletePaymentsModal(true)}
+    />
+  );
 };
 
 // 결제 정보 컬럼

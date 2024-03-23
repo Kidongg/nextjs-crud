@@ -6,6 +6,7 @@ import Context from "./Context";
 const Provider = ({ children }: { children: React.ReactNode }) => {
   const [isAddPaymentsModal, setIsAddPaymentsModal] = useState(false); // 결제 정보를 추가하는 모달 상태
   const [isEditPaymentsModal, setIsEditPaymentsModal] = useState(false); // 결제 정보를 수정하는 모달 상태
+  const [isDeletePaymentsModal, setIsDeletePaymentsModal] = useState(false); // 결제 정보를 삭제하는 모달 상태
 
   return (
     <Context.Provider
@@ -14,6 +15,8 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
         setIsAddPaymentsModal,
         isEditPaymentsModal,
         setIsEditPaymentsModal,
+        isDeletePaymentsModal,
+        setIsDeletePaymentsModal,
       }}
     >
       {children}
