@@ -43,7 +43,7 @@ export const paymentColumns: ColumnDef<Payment>[] = [
     header: "결제명",
   },
   {
-    accessorKey: "amount",
+    accessorKey: "price",
     header: "금액",
   },
   {

@@ -2,38 +2,59 @@
   "payments": [
     {
       "id": "728ed52f",
-      "amount": 3000,
+      "price": 3000,
       "status": "pending",
       "email": "m@example.com",
       "name": "양파"
     },
     {
       "id": "489e1d42",
-      "amount": 3000,
+      "price": 3000,
       "status": "processing",
       "email": "example@gmail.com",
       "name": "대파"
     },
     {
       "id": "d6b3b6f2",
-      "amount": 3000,
+      "price": 3000,
       "status": "pending",
       "email": "invigoworks@co.kr",
       "name": "마늘"
     },
     {
       "id": "j2q3b6f4",
-      "amount": 5000,
+      "price": 5000,
       "status": "success",
       "email": "naver@daum.net",
       "name": "소시지"
     },
     {
       "id": "f6b2i6f7",
-      "amount": 5000,
+      "price": 5000,
       "status": "failed",
       "email": "kakao@daum.net",
       "name": "계란"
+    },
+    {
+      "id": "753a",
+      "name": "케찹",
+      "price": 4000,
+      "email": "google@google.com",
+      "status": "success"
+    },
+    {
+      "id": "ca40",
+      "name": "돈까스소스",
+      "price": 8000,
+      "email": "emart@emart.com",
+      "status": "processing"
+    },
+    {
+      "id": "24a0",
+      "name": "립밤",
+      "price": 1000,
+      "email": "lipbom@lipbom.com",
+      "status": "processing"
     }
   ]
 }
