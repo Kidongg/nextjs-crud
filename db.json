@@ -2,33 +2,38 @@
   "payments": [
     {
       "id": "728ed52f",
-      "amount": 100,
+      "amount": 3000,
       "status": "pending",
-      "email": "m@example.com"
+      "email": "m@example.com",
+      "name": "양파"
     },
     {
       "id": "489e1d42",
-      "amount": 125,
+      "amount": 3000,
       "status": "processing",
-      "email": "example@gmail.com"
+      "email": "example@gmail.com",
+      "name": "대파"
     },
     {
       "id": "d6b3b6f2",
-      "amount": 200,
+      "amount": 3000,
       "status": "pending",
-      "email": "invigoworks@co.kr"
+      "email": "invigoworks@co.kr",
+      "name": "마늘"
     },
     {
       "id": "j2q3b6f4",
-      "amount": 300,
+      "amount": 5000,
       "status": "success",
-      "email": "naver@daum.net"
+      "email": "naver@daum.net",
+      "name": "소시지"
     },
     {
       "id": "f6b2i6f7",
-      "amount": 400,
+      "amount": 5000,
       "status": "failed",
-      "email": "kakao@daum.net"
+      "email": "kakao@daum.net",
+      "name": "계란"
     }
   ]
 }

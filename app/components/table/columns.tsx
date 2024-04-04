@@ -39,8 +39,8 @@ export const PaymentDeleteIcon = ({ row }: { row: Row<Payment> }) => {
 // 결제 정보 컬럼
 export const paymentColumns: ColumnDef<Payment>[] = [
   {
-    accessorKey: "status",
-    header: "상태",
+    accessorKey: "name",
+    header: "결제명",
   },
   {
     accessorKey: "amount",
@@ -49,6 +49,10 @@ export const paymentColumns: ColumnDef<Payment>[] = [
   {
     accessorKey: "email",
     header: "이메일",
+  },
+  {
+    accessorKey: "status",
+    header: "상태",
   },
   {
     id: "edit",
