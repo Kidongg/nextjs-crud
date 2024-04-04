@@ -62,7 +62,7 @@ const PaymentEditModal = () => {
           </div>
         </div>
         {/* 양식 버튼 */}
-        <div className="bg-green-500 border-none text-white px-8 py-4 text-center no-underline inline-block text-lg mx-1 my-1 cursor-pointer rounded-sm w-full mt-10">
+        <div className="bg-blue-500 border-none text-white px-8 py-4 text-center no-underline inline-block text-lg mx-1 my-1 cursor-pointer rounded-sm w-full mt-10">
           결제 내역 수정하기
         </div>
       </div>

@@ -18,6 +18,7 @@ export const PaymentEditIcon = ({ row }: { row: Row<Payment> }) => {
 
   return (
     <MdEditSquare
+      size={20}
       className="cursor-pointer"
       onClick={() => setIsEditPaymentsModal(true)}
     />
@@ -30,6 +31,7 @@ export const PaymentDeleteIcon = ({ row }: { row: Row<Payment> }) => {
 
   return (
     <MdDelete
+      size={20}
       className="cursor-pointer"
       onClick={() => setIsDeletePaymentsModal(true)}
     />
