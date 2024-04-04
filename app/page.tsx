@@ -62,6 +62,7 @@ const Page = () => {
           onClick={() => {
             setIsAddPaymentsModal(true);
           }}
+          variant="secondary"
         >
           추가하기
         </Button>
