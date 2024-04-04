@@ -21,7 +21,7 @@ const PaymentEditModal = () => {
     >
       <div
         className={
-          "bg-white p-5 rounded-lg shadow-lg overflow-y-auto flex flex-col gap-8 w-1/2 max-h-4/5 z-60 overflow-x-hidden"
+          "bg-white p-5 rounded-lg shadow-lg overflow-y-auto flex flex-col gap-8 w-96 max-h-4/5 z-60 overflow-x-hidden"
         }
       >
         <div
