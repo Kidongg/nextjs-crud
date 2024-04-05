@@ -1,6 +1,7 @@
 "use client";
 
 import useModal from "@/app/hooks/useModal";
+import useStatus from "@/app/hooks/useStatus";
 import { TransactionType } from "@/app/types/transaction-type";
 import { ColumnDef, Row } from "@tanstack/react-table";
 import { MdEditSquare } from "react-icons/md";
@@ -8,7 +9,8 @@ import { MdDelete } from "react-icons/md";
 
 // 결제 정보 수정 컴포넌트
 export const PaymentEditIcon = ({ row }: { row: Row<Payment> }) => {
-  const { setIsEditPaymentsModal, setEditPaymentId } = useModal();
+  const { setIsEditPaymentsModal } = useModal();
+  const { setEditPaymentId } = useStatus();
 
   return (
     <MdEditSquare
@@ -24,7 +26,8 @@ export const PaymentEditIcon = ({ row }: { row: Row<Payment> }) => {
 
 // 결제 정보 삭제 컴포넌트
 export const PaymentDeleteIcon = ({ row }: { row: Row<Payment> }) => {
-  const { setIsDeletePaymentsModal, setDeletePaymentId } = useModal();
+  const { setIsDeletePaymentsModal } = useModal();
+  const { setDeletePaymentId } = useStatus();
 
   return (
     <MdDelete
@@ -66,6 +69,7 @@ export const paymentColumns: ColumnDef<Payment>[] = [
   },
   {
     id: "delete",
+    header: "삭제",
     cell: PaymentDeleteIcon,
   },
 ];

@@ -1,10 +1,11 @@
 import { deletePayment } from "@/app/apis/payment-apis";
 import useModal from "@/app/hooks/useModal";
+import useStatus from "@/app/hooks/useStatus";
 import { IoClose } from "react-icons/io5";
 
 const PaymentDeleteModal = () => {
-  const { setIsDeletePaymentsModal, deletePaymentId, setDeletePaymentId } =
-    useModal();
+  const { setIsDeletePaymentsModal } = useModal();
+  const { deletePaymentId, setDeletePaymentId } = useStatus();
 
   // 모달 나가는 함수
   const handleModalClose = () => {
