@@ -1,5 +1,5 @@
-import Button from "@/app/components/(client)/button/Button";
-import Table from "@/app/components/(client)/table/Table";
+import Button from "@/app/components/(common)/button/Button";
+import Table from "@/app/components/(common)/table/Table";
 
 const Page = () => {
   return (
