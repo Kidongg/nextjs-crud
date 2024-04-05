@@ -49,7 +49,7 @@ const PaymentAddModal = () => {
         status,
       };
 
-      const res = await addPayment(payment).then((res) => {
+      await addPayment(payment).then((res) => {
         alert("결제 내역이 추가되었습니다.");
         setIsAddPaymentsModal(false);
         window.location.reload();

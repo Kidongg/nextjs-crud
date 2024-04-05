@@ -36,11 +36,11 @@
       "name": "계란"
     },
     {
-      "id": "753a",
-      "name": "케찹",
+      "name": "마요네즈",
       "price": 4000,
       "email": "google@google.com",
-      "status": "success"
+      "status": "pending",
+      "id": "753a"
     },
     {
       "id": "ca40",

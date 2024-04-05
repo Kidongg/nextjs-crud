@@ -10,17 +10,18 @@ import {
   SelectValue,
 } from "../ui/select";
 import { useEffect, useRef, useState } from "react";
-import { getPayment } from "@/app/apis/apis";
+import { editPayment, getPayment } from "@/app/apis/apis";
 
 const PaymentEditModal = () => {
   const [payment, setPayment] = useState<Payment | null>(null); // 결제 정보 상태
 
-  const { setIsEditPaymentsModal, editPaymentId } = useModal();
+  const { setIsEditPaymentsModal, editPaymentId, setEditPaymentId } =
+    useModal();
 
   const nameRef = useRef<HTMLInputElement>(null);
   const priceRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const [status, setStatus] = useState(""); // ["pending", "processing", "success", "failed"]
+  const [status, setStatus] = useState<PaymentStatus>("pending"); // ["pending", "processing", "success", "failed"]
 
   // 데이터 패칭 함수 실행
   useEffect(() => {
@@ -42,8 +43,33 @@ const PaymentEditModal = () => {
   };
 
   // 상태 변경 함수
-  const handleStatusChange = (value: string) => {
+  const handleStatusChange = (value: PaymentStatus) => {
     setStatus(value);
+  };
+
+  // 결제 내역 수정 함수
+  const handleEditPayment = async () => {
+    try {
+      const name = nameRef.current?.value || "";
+      const price = priceRef.current?.value;
+      const email = emailRef.current?.value || "";
+
+      const payment = {
+        name,
+        price: Number(price),
+        email,
+        status,
+      };
+
+      await editPayment(editPaymentId, payment).then(() => {
+        alert("결제 내역이 수정되었습니다.");
+        setIsEditPaymentsModal(false);
+        setEditPaymentId(null);
+        window.location.reload();
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -111,7 +137,10 @@ const PaymentEditModal = () => {
           </div>
         </div>
         {/* 양식 버튼 */}
-        <div className="bg-blue-500 border-none text-white px-8 py-4 text-center no-underline inline-block text-lg mx-1 my-1 cursor-pointer rounded-sm w-full mt-10">
+        <div
+          className="bg-blue-500 border-none text-white px-8 py-4 text-center no-underline inline-block text-lg mx-1 my-1 cursor-pointer rounded-sm w-full mt-10"
+          onClick={handleEditPayment}
+        >
           결제 내역 수정하기
         </div>
       </div>
@@ -121,9 +150,12 @@ const PaymentEditModal = () => {
 
 export default PaymentEditModal;
 
+//! 타입 정의
 interface Payment {
   name: string;
   price: number;
   email: string;
   status: "pending" | "processing" | "success" | "failed";
 }
+
+type PaymentStatus = "pending" | "processing" | "success" | "failed";
