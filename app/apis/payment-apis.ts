@@ -1,4 +1,4 @@
-// API 조회 함수
+// 결제 조회 API 함수
 export const getPayments = async () => {
   const res = await fetch("http://localhost:3001/payments", {
     method: "GET",
@@ -15,7 +15,7 @@ export const getPayments = async () => {
   return data;
 };
 
-// API 추가 함수
+// 결제 추가 API 함수
 export const addPayment = async (payment: any) => {
   const res = await fetch("http://localhost:3001/payments", {
     method: "POST",
@@ -33,7 +33,7 @@ export const addPayment = async (payment: any) => {
   return data;
 };
 
-// API 수정 함수
+// 결제 수정 API 함수
 export const editPayment = async (id: string, payment: Payment) => {
   const res = await fetch(`http://localhost:3001/payments/${id}`, {
     method: "PUT",
@@ -51,7 +51,7 @@ export const editPayment = async (id: string, payment: Payment) => {
   return data;
 };
 
-// API 삭제 함수
+// 결제 삭제 API 함수
 export const deletePayment = async (id: string) => {
   const res = await fetch(`http://localhost:3001/payments/${id}`, {
     method: "DELETE",
@@ -68,7 +68,7 @@ export const deletePayment = async (id: string) => {
   return data;
 };
 
-// API 상세 조회 함수
+// 결제 상세 조회 API 함수
 export const getPayment = async (id: string) => {
   const res = await fetch(`http://localhost:3001/payments/${id}`, {
     method: "GET",

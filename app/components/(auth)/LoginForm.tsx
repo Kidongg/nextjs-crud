@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,6 +14,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { login } from "@/app/apis/auth-apis";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   username: z.string().min(5).max(30),
@@ -22,6 +22,8 @@ const formSchema = z.object({
 });
 
 const LoginForm = () => {
+  const router = useRouter();
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,6 +43,7 @@ const LoginForm = () => {
         if (accessToken || refreshToken) {
           document.cookie = `accessToken=${accessToken};`;
           document.cookie = `refreshToken=${refreshToken};`;
+          router.push("/profile");
         }
       });
     } catch (error) {
