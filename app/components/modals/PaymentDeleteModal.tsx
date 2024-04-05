@@ -14,7 +14,7 @@ const PaymentDeleteModal = () => {
   // 결제 내역 삭제 함수
   const handleDeletePayment = async () => {
     try {
-      await deletePayment(deletePaymentId).then((res) => {
+      await deletePayment(deletePaymentId).then(() => {
         alert("결제 내역이 삭제되었습니다.");
         setIsDeletePaymentsModal(false);
         setDeletePaymentId(null);
