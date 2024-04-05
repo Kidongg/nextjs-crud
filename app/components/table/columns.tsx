@@ -14,13 +14,16 @@ export type Payment = {
 
 // 결제 정보 수정 컴포넌트
 export const PaymentEditIcon = ({ row }: { row: Row<Payment> }) => {
-  const { setIsEditPaymentsModal } = useModal();
+  const { setIsEditPaymentsModal, setEditPaymentId } = useModal();
 
   return (
     <MdEditSquare
       size={20}
       className="cursor-pointer"
-      onClick={() => setIsEditPaymentsModal(true)}
+      onClick={() => {
+        setIsEditPaymentsModal(true);
+        setEditPaymentId(row.original.id);
+      }}
     />
   );
 };

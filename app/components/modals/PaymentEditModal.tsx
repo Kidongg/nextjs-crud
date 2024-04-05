@@ -9,9 +9,42 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { useEffect, useRef, useState } from "react";
+import { getPayment } from "@/app/apis/apis";
 
 const PaymentEditModal = () => {
-  const { setIsEditPaymentsModal } = useModal();
+  const [payment, setPayment] = useState<Payment | null>(null); // 결제 정보 상태
+
+  const { setIsEditPaymentsModal, editPaymentId } = useModal();
+
+  const nameRef = useRef<HTMLInputElement>(null);
+  const priceRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const [status, setStatus] = useState(""); // ["pending", "processing", "success", "failed"]
+
+  // 데이터 패칭 함수 실행
+  useEffect(() => {
+    const fetchPayment = async (editPaymentId: string) => {
+      try {
+        const payment = await getPayment(editPaymentId);
+        setPayment(payment);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPayment(editPaymentId);
+  }, []);
+
+  // 모달 나가는 함수
+  const handleModalClose = () => {
+    setIsEditPaymentsModal(false);
+  };
+
+  // 상태 변경 함수
+  const handleStatusChange = (value: string) => {
+    setStatus(value);
+  };
 
   return (
     <div
@@ -26,9 +59,7 @@ const PaymentEditModal = () => {
       >
         <div
           className="flex justify-end cursor-pointer"
-          onClick={() => {
-            setIsEditPaymentsModal(false);
-          }}
+          onClick={handleModalClose}
         >
           <IoClose size={20} />
         </div>
@@ -36,21 +67,39 @@ const PaymentEditModal = () => {
         <div className={"flex flex-col justify-center items-center gap-5"}>
           <div className="w-full">
             <Label htmlFor="name">결제명</Label>
-            <Input id="name" type="text" />
+            <Input
+              id="name"
+              type="text"
+              defaultValue={payment?.name}
+              ref={nameRef}
+            />
           </div>
           <div className="w-full">
             <Label htmlFor="price">금액</Label>
-            <Input id="price" type="number" />
+            <Input
+              id="price"
+              type="number"
+              defaultValue={payment?.price}
+              ref={priceRef}
+            />
           </div>
           <div className="w-full">
             <Label htmlFor="email">이메일</Label>
-            <Input id="email" type="email" />
+            <Input
+              id="email"
+              type="email"
+              defaultValue={payment?.email}
+              ref={emailRef}
+            />
           </div>
           <div className="w-full">
             <Label htmlFor="status">상태</Label>
-            <Select>
+            <Select
+              defaultValue={payment?.status}
+              onValueChange={handleStatusChange}
+            >
               <SelectTrigger>
-                <SelectValue placeholder="상태" />
+                <SelectValue placeholder={payment?.status} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="pending">보류 중</SelectItem>
@@ -71,3 +120,10 @@ const PaymentEditModal = () => {
 };
 
 export default PaymentEditModal;
+
+interface Payment {
+  name: string;
+  price: number;
+  email: string;
+  status: "pending" | "processing" | "success" | "failed";
+}

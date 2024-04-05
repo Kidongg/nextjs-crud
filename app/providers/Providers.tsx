@@ -9,6 +9,7 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
   const [isDeletePaymentsModal, setIsDeletePaymentsModal] = useState(false); // 결제 정보를 삭제하는 모달 상태
 
   const [deletePaymentId, setDeletePaymentId] = useState(null); // 삭제할 결제 정보의 ID
+  const [editPaymentId, setEditPaymentId] = useState(null); // 수정할 결제 정보의 ID
 
   return (
     <Context.Provider
@@ -21,6 +22,8 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
         setIsDeletePaymentsModal,
         deletePaymentId,
         setDeletePaymentId,
+        editPaymentId,
+        setEditPaymentId,
       }}
     >
       {children}

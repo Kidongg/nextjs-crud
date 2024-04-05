@@ -11,6 +11,7 @@ import { getPayments } from "./apis/apis";
 
 const Page = () => {
   const [payments, setPayments] = useState([]); // 결제 정보 상태
+
   const {
     isAddPaymentsModal,
     setIsAddPaymentsModal,
@@ -21,8 +22,12 @@ const Page = () => {
   // 데이터 패칭 함수 실행
   useEffect(() => {
     const fetchPayments = async () => {
-      const payments = await getPayments();
-      setPayments(payments);
+      try {
+        const payments = await getPayments();
+        setPayments(payments);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchPayments();
