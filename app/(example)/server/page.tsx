@@ -1,4 +1,4 @@
-import { getPayments } from "@/app/apis/apis";
+import { getPayments } from "@/app/apis/payment-apis";
 import Button from "@/app/components/(server)/button/Button";
 import Table from "@/app/components/(server)/table/Table";
 

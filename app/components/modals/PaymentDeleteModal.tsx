@@ -1,4 +1,4 @@
-import { deletePayment } from "@/app/apis/apis";
+import { deletePayment } from "@/app/apis/payment-apis";
 import useModal from "@/app/hooks/useModal";
 import { IoClose } from "react-icons/io5";
 

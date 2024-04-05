@@ -6,7 +6,7 @@ import { paymentColumns } from "../../table/columns";
 import useModal from "@/app/hooks/useModal";
 import PaymentEditModal from "../../modals/PaymentEditModal";
 import PaymentDeleteModal from "../../modals/PaymentDeleteModal";
-import { getPayments } from "@/app/apis/apis";
+import { getPayments } from "@/app/apis/payment-apis";
 
 const Table = () => {
   const [payments, setPayments] = useState([]); // 결제 정보 상태

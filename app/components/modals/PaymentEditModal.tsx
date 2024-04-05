@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { useEffect, useRef, useState } from "react";
-import { editPayment, getPayment } from "@/app/apis/apis";
+import { editPayment, getPayment } from "@/app/apis/payment-apis";
 import { TransactionType } from "@/app/types/transaction-type";
 
 const PaymentEditModal = () => {
