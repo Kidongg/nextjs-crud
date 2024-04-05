@@ -1,6 +1,7 @@
 "use client";
 
 import useModal from "@/app/hooks/useModal";
+import { TransactionType } from "@/app/types/transaction-type";
 import { ColumnDef, Row } from "@tanstack/react-table";
 import { MdEditSquare } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
@@ -61,6 +62,9 @@ export const paymentColumns: ColumnDef<Payment>[] = [
   {
     accessorKey: "status",
     header: "상태",
+    cell: ({ row }) => {
+      return <span>{TransactionType[row.original.status]}</span>;
+    },
   },
   {
     id: "edit",

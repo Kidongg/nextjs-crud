@@ -11,6 +11,7 @@ import {
 } from "../ui/select";
 import { useEffect, useRef, useState } from "react";
 import { editPayment, getPayment } from "@/app/apis/apis";
+import { TransactionType } from "@/app/types/transaction-type";
 
 const PaymentEditModal = () => {
   const [payment, setPayment] = useState<Payment | null>(null); // 결제 정보 상태
@@ -125,7 +126,13 @@ const PaymentEditModal = () => {
               onValueChange={handleStatusChange}
             >
               <SelectTrigger>
-                <SelectValue placeholder={payment?.status} />
+                <SelectValue
+                  placeholder={
+                    TransactionType[
+                      payment?.status as keyof typeof TransactionType
+                    ]
+                  }
+                />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="pending">보류 중</SelectItem>
