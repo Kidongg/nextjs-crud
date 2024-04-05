@@ -9,6 +9,8 @@ const useModal = () => {
     setIsEditPaymentsModal,
     isDeletePaymentsModal,
     setIsDeletePaymentsModal,
+    deletePaymentId,
+    setDeletePaymentId,
   } = useContext(Context);
 
   return {
@@ -18,6 +20,8 @@ const useModal = () => {
     setIsEditPaymentsModal,
     isDeletePaymentsModal,
     setIsDeletePaymentsModal,
+    deletePaymentId,
+    setDeletePaymentId,
   };
 };
 

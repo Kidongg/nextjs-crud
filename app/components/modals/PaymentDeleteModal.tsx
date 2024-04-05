@@ -1,8 +1,29 @@
+import { deletePayment } from "@/app/apis/apis";
 import useModal from "@/app/hooks/useModal";
 import { IoClose } from "react-icons/io5";
 
 const PaymentDeleteModal = () => {
-  const { setIsDeletePaymentsModal } = useModal();
+  const { setIsDeletePaymentsModal, deletePaymentId, setDeletePaymentId } =
+    useModal();
+
+  // 모달 나가는 함수
+  const handleModalClose = () => {
+    setIsDeletePaymentsModal(false);
+  };
+
+  // 결제 내역 삭제 함수
+  const handleDeletePayment = async () => {
+    try {
+      const res = await deletePayment(deletePaymentId).then((res) => {
+        alert("결제 내역이 삭제되었습니다.");
+        setIsDeletePaymentsModal(false);
+        setDeletePaymentId(null);
+        window.location.reload();
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div
@@ -17,13 +38,14 @@ const PaymentDeleteModal = () => {
       >
         <div
           className="flex justify-end cursor-pointer"
-          onClick={() => {
-            setIsDeletePaymentsModal(false);
-          }}
+          onClick={handleModalClose}
         >
           <IoClose size={20} />
         </div>
-        <div className="bg-red-400 border-none text-white px-8 py-4 text-center no-underline inline-block text-lg mx-1 my-0.5 cursor-pointer rounded-sm w-full">
+        <div
+          className="bg-red-400 border-none text-white px-8 py-4 text-center no-underline inline-block text-lg mx-1 my-0.5 cursor-pointer rounded-sm w-full"
+          onClick={handleDeletePayment}
+        >
           결제 내역 삭제하기
         </div>
       </div>

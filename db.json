@@ -48,13 +48,6 @@
       "price": 8000,
       "email": "emart@emart.com",
       "status": "processing"
-    },
-    {
-      "id": "24a0",
-      "name": "립밤",
-      "price": 1000,
-      "email": "lipbom@lipbom.com",
-      "status": "processing"
     }
   ]
 }

@@ -32,7 +32,6 @@ const PaymentAddModal = () => {
 
   // 결제 내역 추가 함수
   const handleAddPayment = async () => {
-    // 여기서 API 요청을 보내고, 성공하면 모달을 닫아줍니다.
     try {
       const name = nameRef.current?.value;
       const price = priceRef.current?.value;

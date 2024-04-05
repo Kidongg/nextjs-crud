@@ -36,3 +36,18 @@ export const addPayment = async (payment: any) => {
 // API 수정 함수
 
 // API 삭제 함수
+export const deletePayment = async (id: number) => {
+  const res = await fetch(`http://localhost:3001/payments/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+
+  const data = await res.json();
+  return data;
+};
