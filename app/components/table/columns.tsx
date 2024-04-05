@@ -6,13 +6,6 @@ import { ColumnDef, Row } from "@tanstack/react-table";
 import { MdEditSquare } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
-
 // 결제 정보 수정 컴포넌트
 export const PaymentEditIcon = ({ row }: { row: Row<Payment> }) => {
   const { setIsEditPaymentsModal, setEditPaymentId } = useModal();
@@ -76,3 +69,11 @@ export const paymentColumns: ColumnDef<Payment>[] = [
     cell: PaymentDeleteIcon,
   },
 ];
+
+//! 타입 정의
+interface Payment {
+  id: string;
+  price: number;
+  status: "pending" | "processing" | "success" | "failed";
+  email: string;
+}

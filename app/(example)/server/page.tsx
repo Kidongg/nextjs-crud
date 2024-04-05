@@ -1,12 +1,15 @@
-import Button from "@/app/components/(common)/button/Button";
-import Table from "@/app/components/(common)/table/Table";
+import { getPayments } from "@/app/apis/apis";
+import Button from "@/app/components/(server)/button/Button";
+import Table from "@/app/components/(server)/table/Table";
 
-const Page = () => {
+const Page = async () => {
+  const payments = await getPayments();
+
   return (
     <div className="py-10 pl-10 pr-10 flex flex-col gap-4 w-full">
       <h1 className="text-2xl font-bold">서버 컴포넌트</h1>
       <Button />
-      <Table />
+      <Table payments={payments} />
     </div>
   );
 };
