@@ -1,8 +1,9 @@
+import { removeCookie, setCookie } from "../utils/cookies";
 import {
   getAccessToken,
   getRefreshToken,
   isAccessTokenExpired,
-} from "../utils/utils";
+} from "../utils/functions";
 
 // 로그인(토큰 발급) API 함수
 export const login = async (req: LoginType) => {
@@ -43,12 +44,19 @@ export const updateToken = async () => {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
 
-  //! 쿠키에 저장된 토큰 삭제하는 로직 추가
-  //! 헤더에서 새로운 토큰 받아와서 쿠키에 저장하는 로직 추가
-  //! API를 재호출하는 로딕 추가
+  // 쿠키에 저장된 토큰 삭제하기
+  removeCookie("accessToken", { path: "/" });
+  removeCookie("refreshToken", { path: "/" });
 
-  const data = await res.json();
-  return data;
+  // 헤더에서 새로운 토큰 받아와서 쿠키에 저장하기
+  const newAccessToken = res.headers.get("accesstoken");
+  const newRefreshToken = res.headers.get("refreshtoken");
+
+  setCookie("accessToken", newAccessToken, { path: "/" });
+  setCookie("refreshToken", newRefreshToken, { path: "/" });
+
+  // 페이지 이동하기
+  location.href = "/profile";
 };
 
 // 유저 정보 조회 API 함수
