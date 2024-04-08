@@ -12,12 +12,13 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { editPayment, getPayment } from "@/app/apis/payment-apis";
 import { TransactionType } from "@/app/types/transaction-type";
+import useStatus from "@/app/hooks/useStatus";
 
 const PaymentEditModal = () => {
   const [payment, setPayment] = useState<Payment | null>(null); // 결제 정보 상태
 
-  const { setIsEditPaymentsModal, editPaymentId, setEditPaymentId } =
-    useModal();
+  const { setIsEditPaymentsModal } = useModal();
+  const { editPaymentId, setEditPaymentId } = useStatus();
 
   const nameRef = useRef<HTMLInputElement>(null);
   const priceRef = useRef<HTMLInputElement>(null);
