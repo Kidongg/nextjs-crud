@@ -1,9 +1,5 @@
-import { removeCookie, setCookie } from "../utils/cookies";
-import {
-  getAccessToken,
-  getRefreshToken,
-  isAccessTokenExpired,
-} from "../utils/functions";
+import { getCookie, removeCookie, setCookie } from "../utils/cookies";
+import { isAccessTokenExpired } from "../utils/functions";
 
 // 로그인(토큰 발급) API 함수
 export const login = async (req: LoginType) => {
@@ -25,8 +21,8 @@ export const login = async (req: LoginType) => {
 
 // 토큰 갱신 API 함수
 export const updateToken = async () => {
-  const accessToken = getAccessToken();
-  const refreshToken = getRefreshToken();
+  const accessToken = getCookie("accessToken");
+  const refreshToken = getCookie("refreshToken");
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_DEV_API}/api/refresh-access-token`,
@@ -61,7 +57,7 @@ export const updateToken = async () => {
 
 // 유저 정보 조회 API 함수
 export const getUserInfo = async () => {
-  const accessToken = getAccessToken();
+  const accessToken = getCookie("accessToken");
 
   if (isAccessTokenExpired(accessToken)) {
     // 토큰이 만료됐을 때

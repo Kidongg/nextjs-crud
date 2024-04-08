@@ -6,14 +6,6 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-// Access Token을 가져오는 함수
-export const getAccessToken = () => {
-  return document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("accessToken="))
-    ?.split("=")[1];
-};
-
 // Access Token이 만료됐는지 확인하는 함수
 export const isAccessTokenExpired = (token: string | undefined) => {
   if (!token) return true;
@@ -23,12 +15,4 @@ export const isAccessTokenExpired = (token: string | undefined) => {
   const now = Date.now();
 
   return now > exp;
-};
-
-// Refresh Token을 가져오는 함수
-export const getRefreshToken = () => {
-  return document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("refreshToken="))
-    ?.split("=")[1];
 };
