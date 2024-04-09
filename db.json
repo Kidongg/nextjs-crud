@@ -1,13 +1,6 @@
 {
   "payments": [
     {
-      "id": "728ed52f",
-      "price": 3000,
-      "status": "pending",
-      "email": "m@example.com",
-      "name": "양파"
-    },
-    {
       "id": "489e1d42",
       "price": 3000,
       "status": "processing",
@@ -29,25 +22,11 @@
       "id": "j2q3b6f4"
     },
     {
-      "id": "f6b2i6f7",
-      "price": 5000,
-      "status": "failed",
-      "email": "kakao@daum.net",
-      "name": "계란"
-    },
-    {
       "name": "마요네즈",
       "price": 4000,
       "email": "google@google.com",
       "status": "pending",
       "id": "753a"
-    },
-    {
-      "name": "돈까스소스",
-      "price": 9000,
-      "email": "emart@emart.com",
-      "status": "pending",
-      "id": "ca40"
     }
   ]
 }

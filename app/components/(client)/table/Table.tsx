@@ -5,13 +5,12 @@ import DataTable from "../../table/DataTable";
 import { paymentColumns } from "../../table/columns";
 import useModal from "@/app/hooks/useModal";
 import PaymentEditModal from "../../modals/PaymentEditModal";
-import PaymentDeleteModal from "../../modals/PaymentDeleteModal";
 import { getPayments } from "@/app/apis/payment-apis";
 
 const Table = () => {
   const [payments, setPayments] = useState([]); // 결제 정보 상태
 
-  const { isEditPaymentsModal, isDeletePaymentsModal } = useModal(); // 모달 상태
+  const { isEditPaymentsModal } = useModal(); // 모달 상태
 
   // 데이터 패칭 함수 실행
   useEffect(() => {
@@ -33,7 +32,6 @@ const Table = () => {
     <>
       <DataTable data={payments} columns={paymentColumns} />
       {isEditPaymentsModal && <PaymentEditModal />}
-      {isDeletePaymentsModal && <PaymentDeleteModal />}
     </>
   );
 };

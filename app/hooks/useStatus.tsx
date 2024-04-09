@@ -10,8 +10,6 @@ const useStatus = () => {
   } = useContext(Context);
 
   return {
-    deletePaymentId,
-    setDeletePaymentId,
     editPaymentId,
     setEditPaymentId,
   };

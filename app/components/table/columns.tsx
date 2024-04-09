@@ -1,5 +1,6 @@
 "use client";
 
+import { deletePayment } from "@/app/apis/payment-apis";
 import useModal from "@/app/hooks/useModal";
 import useStatus from "@/app/hooks/useStatus";
 import { TransactionType } from "@/app/types/transaction-type";
@@ -26,17 +27,24 @@ export const PaymentEditIcon = ({ row }: { row: Row<Payment> }) => {
 
 // 결제 정보 삭제 컴포넌트
 export const PaymentDeleteIcon = ({ row }: { row: Row<Payment> }) => {
-  const { setIsDeletePaymentsModal } = useModal();
-  const { setDeletePaymentId } = useStatus();
+  // 결제 내역 삭제 함수
+  const handleDeletePayment = async () => {
+    const isConfirm = confirm("정말 삭제하시겠습니까?");
+
+    if (isConfirm) {
+      await deletePayment(row.original.id).then(() => {
+        alert("결제 내역이 삭제되었습니다.");
+
+        window.location.reload();
+      });
+    }
+  };
 
   return (
     <MdDelete
       size={20}
       className="cursor-pointer"
-      onClick={() => {
-        setIsDeletePaymentsModal(true);
-        setDeletePaymentId(row.original.id);
-      }}
+      onClick={handleDeletePayment}
     />
   );
 };
